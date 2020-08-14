@@ -12,4 +12,14 @@ public class Position {
     public int getX() { return x; }
 
     public int getY() { return y; }
+
+    public void plusX() { this.x++; }
+
+    public void minusX() { this.x--; }
+
+    public void plusY() {
+        this.y++;
+    }
+
+    public void minusY() { this.y--; }
 }

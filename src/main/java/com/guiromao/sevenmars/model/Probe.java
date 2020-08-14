@@ -16,7 +16,17 @@ public class Probe {
     public Direction getDirection() { return direction; }
 
     public void forward() {
-        System.out.println(" ande para frente");
+        if(direction.equals(Direction.N))
+            this.position.plusY();
+
+        if(direction.equals(Direction.S))
+            this.position.minusY();
+
+        if(direction.equals(Direction.E))
+            this.position.plusX();
+
+        if(direction.equals(Direction.W))
+            this.position.minusX();
     }
 
     public void right() {

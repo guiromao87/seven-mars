@@ -16,7 +16,7 @@ public class ProbeService {
     @Autowired
     private Plateau plateau;
 
-    public void move(List<Moviment> moviments) {
+    public Probe move(List<Moviment> moviments) {
         Optional<Probe> optional = plateau.getProbe();
 
         if(!optional.isPresent())
@@ -24,5 +24,7 @@ public class ProbeService {
 
         Probe probe = optional.get();
         moviments.stream().forEach(moviment -> moviment.move(probe));
+
+        return probe;
     }
 }

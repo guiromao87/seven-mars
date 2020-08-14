@@ -61,7 +61,6 @@ public class ProbeTest {
         assertEquals(Direction.E, probe.getDirection());
     }
 
-
     @Test
     public void shouldTurnFromEastToNorthInTheSamePosition() {
         Probe probe = new Probe(new Position(0,0), Direction.E);
@@ -69,9 +68,6 @@ public class ProbeTest {
 
         assertEquals(Direction.S, probe.getDirection());
     }
-
-
-
 
     @Test
     public void shouldTakeAFullRightTurnFromTheSouthInTheSamePosition() {
@@ -105,5 +101,43 @@ public class ProbeTest {
         probe.left();
 
         assertEquals(Direction.E, probe.getDirection());
+    }
+
+    @Test
+    public void shouldMoveForwardOnePointTowardsTheNorth() {
+        Probe probe = new Probe(new Position(1,2), Direction.N);
+        probe.forward();
+
+        assertEquals(1, probe.getPosition().getX());
+        assertEquals(3, probe.getPosition().getY());
+    }
+
+    @Test
+    public void shouldMoveForwardTwoPointsTowardsTheEast() {
+        Probe probe = new Probe(new Position(1,3), Direction.E);
+        probe.forward();
+        probe.forward();
+
+        assertEquals(3, probe.getPosition().getX());
+        assertEquals(3, probe.getPosition().getY());
+    }
+
+    @Test
+    public void shouldMoveForwardTwoPointsTowardsTheWest() {
+        Probe probe = new Probe(new Position(2,5), Direction.W);
+        probe.forward();
+        probe.forward();
+
+        assertEquals(0, probe.getPosition().getX());
+        assertEquals(5, probe.getPosition().getY());
+    }
+
+    @Test
+    public void shouldMoveForwardOnePointTowardsTheSouth() {
+        Probe probe = new Probe(new Position(4,3), Direction.S);
+        probe.forward();
+
+        assertEquals(4, probe.getPosition().getX());
+        assertEquals(2, probe.getPosition().getY());
     }
 }

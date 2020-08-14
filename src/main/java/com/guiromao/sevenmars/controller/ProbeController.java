@@ -43,10 +43,10 @@ public class ProbeController {
     }
 
     @PutMapping
-    public ResponseEntity<?> move(@RequestBody List<Moviment> moviments) {
+    public ResponseEntity<ProbeDto> move(@RequestBody List<Moviment> moviments) {
         try {
-            this.probeService.move(moviments);
-            return ResponseEntity.ok().build();
+            Probe probe = this.probeService.move(moviments);
+            return ResponseEntity.ok(new ProbeDto(probe));
         } catch (ProbeNotAtPlateauException ex) {
             return ResponseEntity.noContent().build();
         }
