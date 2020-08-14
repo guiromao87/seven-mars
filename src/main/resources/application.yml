@@ -1,1 +1,4 @@
-
+proble:
+  error:
+    field: direction
+    message: Invalid direction, please enter N, S, E or W

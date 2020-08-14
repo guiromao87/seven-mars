@@ -1,6 +1,7 @@
 package com.guiromao.sevenmars.validation;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
@@ -19,6 +20,12 @@ public class ProbeErrorValidationAdvicer {
     @Autowired
     private MessageSource messageSource;
 
+    @Value("${proble.error.field}")
+    private String field;
+
+    @Value("${proble.error.message}")
+    private String message;
+
     @ResponseStatus(code = HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public List<ProbleErrorFormDto> handlePositionError(MethodArgumentNotValidException ex) {
@@ -36,7 +43,7 @@ public class ProbeErrorValidationAdvicer {
     @ResponseStatus(code = HttpStatus.BAD_REQUEST)
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ProbleErrorFormDto handleDirectionError(HttpMessageNotReadableException ex) {
-        return new ProbleErrorFormDto("direction", "Invalid direction, please enter: N, S, E or W");
+        return new ProbleErrorFormDto(field, message);
     }
 
 }
