@@ -3,10 +3,20 @@ package com.guiromao.sevenmars.model.form;
 import com.guiromao.sevenmars.model.Direction;
 import com.guiromao.sevenmars.model.Position;
 import com.guiromao.sevenmars.model.Probe;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 public class NewProbeForm {
-    private int x;
-    private int y;
+
+    @NotNull(message = "Required field")
+    @Min(value = 0, message = "Position x must be equal to or greater than 0")
+    private Integer x;
+
+    @NotNull(message = "Required field")
+    @Min(value = 0, message = "Position y must be equal to or greater than 0")
+    private Integer y;
+
+    @NotNull(message = "Required field")
     private Direction direction;
 
     public int getX() { return x; }

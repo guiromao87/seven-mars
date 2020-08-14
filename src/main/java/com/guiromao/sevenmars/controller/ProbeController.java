@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/probe")
 public class ProbeController {
@@ -19,7 +21,7 @@ public class ProbeController {
     private ProbeService probeService;
 
     @PostMapping
-    public ResponseEntity<ProbeDto> register(@RequestBody NewProbeForm newProbeForm) {
+    public ResponseEntity<ProbeDto> register(@RequestBody @Valid NewProbeForm newProbeForm) {
         Probe probe = newProbeForm.toProbe();
         return ResponseEntity.ok(new ProbeDto(probe));
     }
