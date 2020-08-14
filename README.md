@@ -5,3 +5,4 @@
     * Java - Versão 1.8
     * Maven
     * Spring Boot, Spring MVC, Devtools
+    * Bean Validation
