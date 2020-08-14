@@ -11,7 +11,7 @@ public class ProbeDto {
     public ProbeDto(Probe probe) {
         this.x = probe.getPosition().getX();
         this.y = probe.getPosition().getY();
-        this.direction = probe.getDirection();
+        this.direction = probe.getDirection().getDirectionName();
     }
 
     public int getX() { return x; }

@@ -13,19 +13,18 @@ public class Probe {
 
     public Position getPosition() { return position; }
 
-    public String getDirection() { return direction.getDirectionName(); }
-
+    public Direction getDirection() { return direction; }
 
     public void forward() {
         System.out.println(" ande para frente");
     }
 
     public void right() {
-        System.out.println(" vire a direita");
+        this.direction = direction.getNextRight(direction.ordinal());
     }
 
     public void left() {
-        System.out.println(" vire a esquerda");
+        this.direction = direction.getNextLeft(direction.ordinal());
     }
 
     @Override

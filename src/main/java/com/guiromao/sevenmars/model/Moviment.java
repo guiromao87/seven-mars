@@ -3,16 +3,12 @@ package com.guiromao.sevenmars.model;
 public enum Moviment {
     L {
         @Override
-        public void move(Probe probe) {
-            probe.left();
-        }
+        public void move(Probe probe) { probe.left(); }
     },
 
     R {
         @Override
-        public void move(Probe probe) {
-            probe.right();
-        }
+        public void move(Probe probe) { probe.right(); }
     },
 
     M {
