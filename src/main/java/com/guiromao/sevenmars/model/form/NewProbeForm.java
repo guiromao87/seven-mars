@@ -1,6 +1,7 @@
 package com.guiromao.sevenmars.model.form;
 
 import com.guiromao.sevenmars.model.Direction;
+import com.guiromao.sevenmars.model.Position;
 import com.guiromao.sevenmars.model.Probe;
 
 public class NewProbeForm {
@@ -15,6 +16,7 @@ public class NewProbeForm {
     public String getDirection() { return direction.getDirectionName(); }
 
     public Probe toProbe() {
-        return new Probe(x,y,direction);
+        Position position = new Position(this.x, this.y);
+        return new Probe(position, direction);
     }
 }
