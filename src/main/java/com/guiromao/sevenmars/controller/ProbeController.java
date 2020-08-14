@@ -1,19 +1,26 @@
 package com.guiromao.sevenmars.controller;
 
+import com.guiromao.sevenmars.model.Moviment;
 import com.guiromao.sevenmars.model.Probe;
 import com.guiromao.sevenmars.model.dto.ProbeDto;
 import com.guiromao.sevenmars.model.form.NewProbeForm;
 import com.guiromao.sevenmars.service.PlateauService;
+import com.guiromao.sevenmars.service.ProbeService;
+import com.guiromao.sevenmars.validation.ProbeNotAtPlateauException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/probe")
 public class ProbeController {
+
+    @Autowired
+    private ProbeService probeService;
 
     @Autowired
     private PlateauService plateauService;
@@ -33,5 +40,15 @@ public class ProbeController {
             return ResponseEntity.ok(new ProbeDto(probeOptional.get()));
 
         return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping
+    public ResponseEntity<?> move(@RequestBody List<Moviment> moviments) {
+        try {
+            this.probeService.move(moviments);
+            return ResponseEntity.ok().build();
+        } catch (ProbeNotAtPlateauException ex) {
+            return ResponseEntity.noContent().build();
+        }
     }
 }

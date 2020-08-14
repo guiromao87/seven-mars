@@ -3,7 +3,6 @@ package com.guiromao.sevenmars.model;
 import java.util.Objects;
 
 public class Probe {
-
     private Position position;
     private Direction direction;
 
@@ -15,6 +14,19 @@ public class Probe {
     public Position getPosition() { return position; }
 
     public String getDirection() { return direction.getDirectionName(); }
+
+
+    public void forward() {
+        System.out.println(" ande para frente");
+    }
+
+    public void right() {
+        System.out.println(" vire a direita");
+    }
+
+    public void left() {
+        System.out.println(" vire a esquerda");
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -29,4 +41,5 @@ public class Probe {
     public int hashCode() {
         return Objects.hash(position, direction);
     }
+
 }
