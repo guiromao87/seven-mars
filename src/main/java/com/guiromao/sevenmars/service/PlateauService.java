@@ -5,6 +5,8 @@ import com.guiromao.sevenmars.model.Probe;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class PlateauService {
 
@@ -14,4 +16,6 @@ public class PlateauService {
     public void register(Probe probe) {
         plateau.register(probe);
     }
+
+    public Optional<Probe> getProbe() { return plateau.getProbe(); }
 }

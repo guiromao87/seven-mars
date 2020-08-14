@@ -1,5 +1,7 @@
 package com.guiromao.sevenmars.model;
 
+import java.util.Optional;
+
 public class Plateau {
     private Probe probe;
 
@@ -7,5 +9,5 @@ public class Plateau {
         this.probe = probe;
     }
 
-    public Probe getProbe() { return probe; }
+    public Optional<Probe> getProbe() { return Optional.ofNullable(this.probe); }
 }
