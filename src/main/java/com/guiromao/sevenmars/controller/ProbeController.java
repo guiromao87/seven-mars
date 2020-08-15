@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -39,6 +40,16 @@ public class ProbeController {
             return ResponseEntity.ok(new ProbeDto(probeOptional.get()));
 
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping
+    public ResponseEntity<List<ProbeDto>> probe() {
+        Map<String, Probe> probes = plateauService.getProbes();
+
+        if(probes.isEmpty())
+            return ResponseEntity.noContent().build();
+
+        return ResponseEntity.ok(ProbeDto.toProbesDto(probes));
     }
 
     @PutMapping("/{name}")

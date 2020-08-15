@@ -29,15 +29,4 @@ public class PlateauController {
         this.plateauService.register(limit);
         return ResponseEntity.ok(new LimitPlateauDto(limit));
     }
-
-    @GetMapping
-    public ResponseEntity<List<ProbeDto>> probe() {
-
-        Map<String, Probe> probes = plateauService.getProbes();
-
-        if(probes.isEmpty())
-            return ResponseEntity.noContent().build();
-
-        return ResponseEntity.ok(ProbeDto.toProbesDto(probes));
-    }
 }
