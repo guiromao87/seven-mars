@@ -7,13 +7,12 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PlateauLimitMoveValidationTest {
-    private Plateau plateau;
+    private Limit limit;
     private PlateauLimitMoveValidation limitValidation;
 
     @BeforeEach
     public void setUp() {
-        plateau = new Plateau();
-        plateau.register(new Limit(5,5));
+        limit = new Limit(5,5);
         limitValidation = new PlateauLimitMoveValidation();
     }
 
@@ -24,7 +23,7 @@ public class PlateauLimitMoveValidationTest {
         Probe probe = new Probe(new Position(0,0), Direction.N);
         probe.forward();
 
-        boolean isOutInsideOfLimit = limitValidation.isOutInsideOfLimitToMove(probe, plateau.getLimit());
+        boolean isOutInsideOfLimit = limitValidation.isOutInsideOfLimitToMove(probe, limit);
 
         assertEquals(false, isOutInsideOfLimit);
         assertEquals(0, probe.getPosition().getX());
@@ -36,7 +35,7 @@ public class PlateauLimitMoveValidationTest {
         Probe probe = new Probe(new Position(3,0), Direction.E);
         probe.forward();
 
-        boolean isOutInsideOfLimit = limitValidation.isOutInsideOfLimitToMove(probe, plateau.getLimit());
+        boolean isOutInsideOfLimit = limitValidation.isOutInsideOfLimitToMove(probe, limit);
 
         assertEquals(false, isOutInsideOfLimit);
         assertEquals(4, probe.getPosition().getX());
@@ -49,7 +48,7 @@ public class PlateauLimitMoveValidationTest {
         probe.forward();
         probe.forward();
 
-        boolean isOutInsideOfLimit = limitValidation.isOutInsideOfLimitToMove(probe, plateau.getLimit());
+        boolean isOutInsideOfLimit = limitValidation.isOutInsideOfLimitToMove(probe, limit);
 
         assertEquals(false, isOutInsideOfLimit);
         assertEquals(3, probe.getPosition().getX());
@@ -61,7 +60,7 @@ public class PlateauLimitMoveValidationTest {
         Probe probe = new Probe(new Position(0,4), Direction.S);
         probe.forward();
 
-        boolean isOutInsideOfLimit = limitValidation.isOutInsideOfLimitToMove(probe, plateau.getLimit());
+        boolean isOutInsideOfLimit = limitValidation.isOutInsideOfLimitToMove(probe, limit);
 
         assertEquals(false, isOutInsideOfLimit);
         assertEquals(0, probe.getPosition().getX());
@@ -81,7 +80,7 @@ public class PlateauLimitMoveValidationTest {
         probe.forward();
         probe.forward();
 
-        boolean isOutInsideOfLimit = limitValidation.isOutInsideOfLimitToMove(probe, plateau.getLimit());
+        boolean isOutInsideOfLimit = limitValidation.isOutInsideOfLimitToMove(probe, limit);
 
         assertEquals(false, isOutInsideOfLimit);
         assertEquals(1, probe.getPosition().getX());
@@ -105,7 +104,7 @@ public class PlateauLimitMoveValidationTest {
         probe.right();
         probe.forward();
 
-        boolean isOutInsideOfLimit = limitValidation.isOutInsideOfLimitToMove(probe, plateau.getLimit());
+        boolean isOutInsideOfLimit = limitValidation.isOutInsideOfLimitToMove(probe, limit);
 
         assertEquals(false, isOutInsideOfLimit);
         assertEquals(5, probe.getPosition().getX());
@@ -118,7 +117,7 @@ public class PlateauLimitMoveValidationTest {
         Probe probe = new Probe(new Position(5,5), Direction.S);
         probe.forward();
 
-        boolean isOutInsideOfLimit = limitValidation.isOutInsideOfLimitToMove(probe, plateau.getLimit());
+        boolean isOutInsideOfLimit = limitValidation.isOutInsideOfLimitToMove(probe, limit);
 
         assertEquals(false, isOutInsideOfLimit);
         assertEquals(5, probe.getPosition().getX());
@@ -130,7 +129,7 @@ public class PlateauLimitMoveValidationTest {
         Probe probe = new Probe(new Position(5,5), Direction.W);
         probe.forward();
 
-        boolean isOutInsideOfLimit = limitValidation.isOutInsideOfLimitToMove(probe, plateau.getLimit());
+        boolean isOutInsideOfLimit = limitValidation.isOutInsideOfLimitToMove(probe, limit);
 
         assertEquals(false, isOutInsideOfLimit);
         assertEquals(4, probe.getPosition().getX());
@@ -143,7 +142,7 @@ public class PlateauLimitMoveValidationTest {
         probe.right();
         probe.forward();
 
-        boolean isOutInsideOfLimit = limitValidation.isOutInsideOfLimitToMove(probe, plateau.getLimit());
+        boolean isOutInsideOfLimit = limitValidation.isOutInsideOfLimitToMove(probe, limit);
 
         assertEquals(true, isOutInsideOfLimit);
         assertEquals(0, probe.getPosition().getX());
@@ -155,7 +154,7 @@ public class PlateauLimitMoveValidationTest {
         Probe probe = new Probe(new Position(0,0), Direction.W);
         probe.forward();
 
-        boolean isOutInsideOfLimit = limitValidation.isOutInsideOfLimitToMove(probe, plateau.getLimit());
+        boolean isOutInsideOfLimit = limitValidation.isOutInsideOfLimitToMove(probe, limit);
 
         assertEquals(true, isOutInsideOfLimit);
         assertEquals(-1, probe.getPosition().getX());
@@ -167,7 +166,7 @@ public class PlateauLimitMoveValidationTest {
         Probe probe = new Probe(new Position(5,5), Direction.N);
         probe.forward();
 
-        boolean isOutInsideOfLimit = limitValidation.isOutInsideOfLimitToMove(probe, plateau.getLimit());
+        boolean isOutInsideOfLimit = limitValidation.isOutInsideOfLimitToMove(probe, limit);
 
         assertEquals(true, isOutInsideOfLimit);
         assertEquals(5, probe.getPosition().getX());
@@ -179,7 +178,7 @@ public class PlateauLimitMoveValidationTest {
         Probe probe = new Probe(new Position(5,5), Direction.E);
         probe.forward();
 
-        boolean isOutInsideOfLimit = limitValidation.isOutInsideOfLimitToMove(probe, plateau.getLimit());
+        boolean isOutInsideOfLimit = limitValidation.isOutInsideOfLimitToMove(probe, limit);
 
         assertEquals(true, isOutInsideOfLimit);
         assertEquals(6, probe.getPosition().getX());
