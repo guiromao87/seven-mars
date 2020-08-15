@@ -4,7 +4,7 @@ import com.guiromao.sevenmars.model.Moviment;
 import com.guiromao.sevenmars.model.Plateau;
 import com.guiromao.sevenmars.model.Probe;
 import com.guiromao.sevenmars.validation.OutsidePlateauLimitException;
-import com.guiromao.sevenmars.validation.PlateauLimitValidation;
+import com.guiromao.sevenmars.validation.PlateauLimitMoveValidation;
 import com.guiromao.sevenmars.validation.ProbeNotAtPlateauException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +19,7 @@ public class ProbeService {
     private Plateau plateau;
 
     @Autowired
-    private PlateauLimitValidation limitValidation;
+    private PlateauLimitMoveValidation limitValidation;
 
     public Probe move(List<Moviment> moviments) {
         Optional<Probe> optional = plateau.getProbe();

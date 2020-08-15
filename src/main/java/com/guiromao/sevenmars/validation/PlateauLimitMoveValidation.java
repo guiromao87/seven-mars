@@ -6,14 +6,7 @@ import com.guiromao.sevenmars.model.Probe;
 import org.springframework.stereotype.Component;
 
 @Component
-public class PlateauLimitValidation {
-
-    public boolean isOutInsideOfLimitToRegister(Probe probe, Limit limit) {
-        if (probe.getPosition().getX() > limit.getX() || probe.getPosition().getY() > limit.getY())
-            return true;
-
-        return false;
-    }
+public class PlateauLimitMoveValidation {
 
     public boolean isOutInsideOfLimitToMove(Probe probe, Limit limit) {
 

@@ -6,16 +6,18 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class PlateauLimitValidationTest {
+public class PlateauLimitMoveValidationTest {
     private Plateau plateau;
-    private PlateauLimitValidation limitValidation;
+    private PlateauLimitMoveValidation limitValidation;
 
     @BeforeEach
     public void setUp() {
         plateau = new Plateau();
         plateau.register(new Limit(5,5));
-        limitValidation = new PlateauLimitValidation();
+        limitValidation = new PlateauLimitMoveValidation();
     }
+
+
 
     @Test
     public void shouldBeInsideThePlateauStartingAt0And0andNorthAndMovingForwardOnce() {
