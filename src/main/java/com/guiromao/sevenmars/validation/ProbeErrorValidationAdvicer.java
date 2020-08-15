@@ -39,11 +39,15 @@ public class ProbeErrorValidationAdvicer {
         return probeErrorsDto;
     }
 
-
     @ResponseStatus(code = HttpStatus.BAD_REQUEST)
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ProbleErrorFormDto handleDirectionError(HttpMessageNotReadableException ex) {
         return new ProbleErrorFormDto(field, message);
     }
 
+    @ResponseStatus(code = HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(ProbeNotAtPlateauException.class)
+    public ErrorDto handleProbeNotAtPlateauError(ProbeNotAtPlateauException ex) {
+        return new ErrorDto(ex.getMessage());
+    }
 }
