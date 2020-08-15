@@ -6,7 +6,6 @@ import com.guiromao.sevenmars.model.dto.ProbeDto;
 import com.guiromao.sevenmars.model.form.NewProbeForm;
 import com.guiromao.sevenmars.service.PlateauService;
 import com.guiromao.sevenmars.service.ProbeService;
-import com.guiromao.sevenmars.validation.ProbeNotAtPlateauException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

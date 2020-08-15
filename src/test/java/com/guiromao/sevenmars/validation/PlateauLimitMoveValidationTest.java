@@ -20,7 +20,7 @@ public class PlateauLimitMoveValidationTest {
 
     @Test
     public void shouldBeInsideThePlateauStartingAt0And0andNorthAndMovingForwardOnce() {
-        Probe probe = new Probe(new Position(0,0), Direction.N);
+        Probe probe = new Probe(new Position(0,0), Direction.N, "probe1");
         probe.forward();
 
         boolean isOutInsideOfLimit = limitValidation.isOutInsideOfLimitToMove(probe, limit);
@@ -32,7 +32,7 @@ public class PlateauLimitMoveValidationTest {
 
     @Test
     public void shouldBeInsideThePlateauStartingAt3And0andEastAndMovingForwardOnce() {
-        Probe probe = new Probe(new Position(3,0), Direction.E);
+        Probe probe = new Probe(new Position(3,0), Direction.E, "probe1");
         probe.forward();
 
         boolean isOutInsideOfLimit = limitValidation.isOutInsideOfLimitToMove(probe, limit);
@@ -44,7 +44,7 @@ public class PlateauLimitMoveValidationTest {
 
     @Test
     public void shouldBeInsideThePlateauStartingAt3And0andNorthAndMovingForwardTwice() {
-        Probe probe = new Probe(new Position(3,0), Direction.N);
+        Probe probe = new Probe(new Position(3,0), Direction.N, "probe1");
         probe.forward();
         probe.forward();
 
@@ -57,7 +57,7 @@ public class PlateauLimitMoveValidationTest {
 
     @Test
     public void shouldBeInsideThePlateauStartingAt0And4andSouthAndMovingForwardOnce() {
-        Probe probe = new Probe(new Position(0,4), Direction.S);
+        Probe probe = new Probe(new Position(0,4), Direction.S, "probe1");
         probe.forward();
 
         boolean isOutInsideOfLimit = limitValidation.isOutInsideOfLimitToMove(probe, limit);
@@ -69,7 +69,7 @@ public class PlateauLimitMoveValidationTest {
 
     @Test
     public void shouldBeInsideThePlateauStartingAt1And2andNorthAndSequenceLMLMLMLMM() {
-        Probe probe = new Probe(new Position(1,2), Direction.N);
+        Probe probe = new Probe(new Position(1,2), Direction.N, "probe1");
         probe.left();
         probe.forward();
         probe.left();
@@ -90,7 +90,7 @@ public class PlateauLimitMoveValidationTest {
 
     @Test
     public void shouldBeInsideThePlateauStartingAt3And3andEastAndSequenceMMRMMRMRRM() {
-        Probe probe = new Probe(new Position(3,3), Direction.E);
+        Probe probe = new Probe(new Position(3,3), Direction.E, "probe1");
         probe.forward();
         probe.forward();
         probe.right();
@@ -114,7 +114,7 @@ public class PlateauLimitMoveValidationTest {
 
     @Test
     public void shouldBeInsideThePlateauStartingAt5And5andSouthAndMovingForwardOnce() {
-        Probe probe = new Probe(new Position(5,5), Direction.S);
+        Probe probe = new Probe(new Position(5,5), Direction.S, "probe1");
         probe.forward();
 
         boolean isOutInsideOfLimit = limitValidation.isOutInsideOfLimitToMove(probe, limit);
@@ -126,7 +126,7 @@ public class PlateauLimitMoveValidationTest {
 
     @Test
     public void shouldBeInsideThePlateauStartingAt5And5andWestAndMovingForwardOnce() {
-        Probe probe = new Probe(new Position(5,5), Direction.W);
+        Probe probe = new Probe(new Position(5,5), Direction.W, "probe1");
         probe.forward();
 
         boolean isOutInsideOfLimit = limitValidation.isOutInsideOfLimitToMove(probe, limit);
@@ -138,7 +138,7 @@ public class PlateauLimitMoveValidationTest {
 
     @Test()
     public void shouldNotBeInsideThePlateauStartingAt0And0andEastAndMovingRightAndForwardOnce() {
-        Probe probe = new Probe(new Position(0,0), Direction.E);
+        Probe probe = new Probe(new Position(0,0), Direction.E, "probe1");
         probe.right();
         probe.forward();
 
@@ -151,7 +151,7 @@ public class PlateauLimitMoveValidationTest {
 
     @Test()
     public void shouldNotBeInsideThePlateauStartingAt0And0andWestAndMovingForwardOnce() {
-        Probe probe = new Probe(new Position(0,0), Direction.W);
+        Probe probe = new Probe(new Position(0,0), Direction.W, "probe1");
         probe.forward();
 
         boolean isOutInsideOfLimit = limitValidation.isOutInsideOfLimitToMove(probe, limit);
@@ -163,7 +163,7 @@ public class PlateauLimitMoveValidationTest {
 
     @Test
     public void shouldNotBeInsideThePlateauStartingAt5And5andNorthAndMovingForwardOnce() {
-        Probe probe = new Probe(new Position(5,5), Direction.N);
+        Probe probe = new Probe(new Position(5,5), Direction.N, "probe1");
         probe.forward();
 
         boolean isOutInsideOfLimit = limitValidation.isOutInsideOfLimitToMove(probe, limit);
@@ -175,7 +175,7 @@ public class PlateauLimitMoveValidationTest {
 
     @Test
     public void shouldNotBeInsideThePlateauStartingAt5And5andEastAndMovingForwardOnce() {
-        Probe probe = new Probe(new Position(5,5), Direction.E);
+        Probe probe = new Probe(new Position(5,5), Direction.E, "probe1");
         probe.forward();
 
         boolean isOutInsideOfLimit = limitValidation.isOutInsideOfLimitToMove(probe, limit);

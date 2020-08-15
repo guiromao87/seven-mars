@@ -5,15 +5,19 @@ import java.util.Objects;
 public class Probe {
     private Position position;
     private Direction direction;
+    private String name;
 
-    public Probe(Position position, Direction direction) {
+    public Probe(Position position, Direction direction, String name) {
         this.position = position;
         this.direction = direction;
+        this.name = name;
     }
 
     public Position getPosition() { return position; }
 
     public Direction getDirection() { return direction; }
+
+    public String getName() { return name; }
 
     public void forward() {
         if(direction.equals(Direction.N))
@@ -37,18 +41,19 @@ public class Probe {
         this.direction = direction.getNextLeft(direction.ordinal());
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Probe probe = (Probe) o;
         return Objects.equals(position, probe.position) &&
-                direction == probe.direction;
+                direction == probe.direction &&
+                Objects.equals(name, probe.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(position, direction);
+        return Objects.hash(position, direction, name);
     }
-
 }

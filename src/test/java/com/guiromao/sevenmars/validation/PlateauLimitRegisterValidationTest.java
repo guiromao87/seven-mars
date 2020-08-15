@@ -19,7 +19,7 @@ public class PlateauLimitRegisterValidationTest {
 
     @Test
     public void shouldBeRegisterInsideThePlateauStartingAt0And0(){
-        Probe probe = new Probe(new Position(0,0), Direction.N);
+        Probe probe = new Probe(new Position(0,0), Direction.N, "probe1");
         boolean isOutInsideOfLimit = limitValidation.isOutInsideOfLimitToRegister(probe, limit);
 
         assertEquals(false, isOutInsideOfLimit);
@@ -27,7 +27,7 @@ public class PlateauLimitRegisterValidationTest {
 
     @Test
     public void shouldBeRegisterInsideThePlateauStartingAt3And2(){
-        Probe probe = new Probe(new Position(3,2), Direction.N);
+        Probe probe = new Probe(new Position(3,2), Direction.N, "probe1");
         boolean isOutInsideOfLimit = limitValidation.isOutInsideOfLimitToRegister(probe, limit);
 
         assertEquals(false, isOutInsideOfLimit);
@@ -35,7 +35,7 @@ public class PlateauLimitRegisterValidationTest {
 
     @Test
     public void shouldBeRegisterInsideThePlateauStartingAt5And5(){
-        Probe probe = new Probe(new Position(5,5), Direction.N);
+        Probe probe = new Probe(new Position(5,5), Direction.N, "probe1");
         boolean isOutInsideOfLimit = limitValidation.isOutInsideOfLimitToRegister(probe, limit);
 
         assertEquals(false, isOutInsideOfLimit);
@@ -43,7 +43,7 @@ public class PlateauLimitRegisterValidationTest {
 
     @Test
     public void shouldNotBeRegisterInsideThePlateauStartingAt5And6(){
-        Probe probe = new Probe(new Position(5,6), Direction.N);
+        Probe probe = new Probe(new Position(5,6), Direction.N, "probe1");
         boolean isOutInsideOfLimit = limitValidation.isOutInsideOfLimitToRegister(probe, limit);
 
         assertEquals(true, isOutInsideOfLimit);
@@ -51,7 +51,7 @@ public class PlateauLimitRegisterValidationTest {
 
     @Test
     public void shouldNotBeRegisterInsideThePlateauStartingAt6And5(){
-        Probe probe = new Probe(new Position(6,5), Direction.N);
+        Probe probe = new Probe(new Position(6,5), Direction.N, "probe1");
         boolean isOutInsideOfLimit = limitValidation.isOutInsideOfLimitToRegister(probe, limit);
 
         assertEquals(true, isOutInsideOfLimit);
