@@ -21,8 +21,8 @@ public class ProbeService {
     @Autowired
     private PlateauLimitMoveValidation limitValidation;
 
-    public Probe move(List<Moviment> moviments) {
-        Optional<Probe> optional = plateau.getProbe();
+    public Probe move(String name, List<Moviment> moviments) {
+        Optional<Probe> optional = plateau.findBy(name);
 
         if(!optional.isPresent())
             throw new ProbeNotAtPlateauException("No probe registered in the plateau");

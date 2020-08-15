@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/probe")
@@ -30,9 +31,20 @@ public class ProbeController {
         return ResponseEntity.ok(new ProbeDto(probe));
     }
 
-    @PutMapping
-    public ResponseEntity<ProbeDto> move(@RequestBody List<Moviment> moviments) {
-        Probe probe = this.probeService.move(moviments);
+    @GetMapping("/{name}")
+    public ResponseEntity<ProbeDto> probe(@PathVariable String name) {
+        Optional<Probe> probeOptional = plateauService.findProbeBy(name);
+
+        if(probeOptional.isPresent())
+            return ResponseEntity.ok(new ProbeDto(probeOptional.get()));
+
+        return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/{name}")
+    public ResponseEntity<ProbeDto> move(@PathVariable String name,
+                                         @RequestBody List<Moviment> moviments) {
+        Probe probe = this.probeService.move(name, moviments);
         return ResponseEntity.ok(new ProbeDto(probe));
     }
 }

@@ -4,7 +4,6 @@ import com.guiromao.sevenmars.model.Limit;
 import com.guiromao.sevenmars.model.Plateau;
 import com.guiromao.sevenmars.model.Probe;
 import com.guiromao.sevenmars.validation.OutsidePlateauLimitException;
-import com.guiromao.sevenmars.validation.PlateauLimitMoveValidation;
 import com.guiromao.sevenmars.validation.PlateauLimitRegisterValidation;
 import com.guiromao.sevenmars.validation.UnregisteredPlateauLimitException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +36,7 @@ public class PlateauService {
         plateau.register(probe);
     }
 
-    public Optional<Probe> getProbe() { return plateau.getProbe(); }
-
     public Map<String, Probe> getProbes() { return plateau.getProbes(); }
+
+    public Optional<Probe> findProbeBy(String name) { return this.plateau.findBy(name); }
 }

@@ -1,6 +1,9 @@
 package com.guiromao.sevenmars.model;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 
 public class Plateau {
     private Limit limit;
@@ -15,9 +18,9 @@ public class Plateau {
         this.probes.put(probe.getName(), probe);
     }
 
-    public Optional<Probe> getProbe() { return Optional.ofNullable(this.probe); }
-
     public Map<String, Probe> getProbes() { return Collections.unmodifiableMap(probes); }
 
     public Limit getLimit() { return limit; }
+
+    public Optional<Probe> findBy(String name) { return Optional.ofNullable(this.probes.get(name)); }
 }
