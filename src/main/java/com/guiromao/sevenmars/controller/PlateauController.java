@@ -1,20 +1,17 @@
 package com.guiromao.sevenmars.controller;
 
 import com.guiromao.sevenmars.model.Limit;
-import com.guiromao.sevenmars.model.Plateau;
-import com.guiromao.sevenmars.model.Probe;
 import com.guiromao.sevenmars.model.dto.LimitPlateauDto;
-import com.guiromao.sevenmars.model.dto.PlateauDto;
-import com.guiromao.sevenmars.model.dto.ProbeDto;
 import com.guiromao.sevenmars.model.form.NewLimitPlateauForm;
 import com.guiromao.sevenmars.service.PlateauService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
-import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/plateau")

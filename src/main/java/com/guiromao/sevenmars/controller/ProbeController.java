@@ -55,6 +55,12 @@ public class ProbeController {
     @PutMapping("/{name}")
     public ResponseEntity<ProbeDto> move(@PathVariable String name,
                                          @RequestBody List<Moviment> moviments) {
+
+        Optional<Probe> optionalProbe = plateauService.findProbeBy(name);
+
+        if(!optionalProbe.isPresent())
+            return ResponseEntity.notFound().build();
+
         Probe probe = this.probeService.move(name, moviments);
         return ResponseEntity.ok(new ProbeDto(probe));
     }
