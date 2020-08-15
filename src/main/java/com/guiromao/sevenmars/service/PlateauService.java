@@ -29,7 +29,7 @@ public class PlateauService {
         if(plateau.getLimit() == null)
             throw new UnregisteredPlateauLimitException("Plateau without a registered limit");
 
-        if(limitValidation.isOutInsideOfLimit(probe))
+        if(limitValidation.isOutInsideOfLimitToRegister(probe, plateau.getLimit()))
             throw new OutsidePlateauLimitException("Proble crossed the limit of the plateau");
 
         plateau.register(probe);
