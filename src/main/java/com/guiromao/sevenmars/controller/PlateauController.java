@@ -3,6 +3,7 @@ package com.guiromao.sevenmars.controller;
 import com.guiromao.sevenmars.model.Limit;
 import com.guiromao.sevenmars.model.Plateau;
 import com.guiromao.sevenmars.model.Probe;
+import com.guiromao.sevenmars.model.dto.LimitPlateauDto;
 import com.guiromao.sevenmars.model.dto.PlateauDto;
 import com.guiromao.sevenmars.model.dto.ProbeDto;
 import com.guiromao.sevenmars.model.form.NewLimitPlateauForm;
@@ -23,10 +24,10 @@ public class PlateauController {
     private PlateauService plateauService;
 
     @PostMapping
-    public ResponseEntity<PlateauDto> register(@RequestBody @Valid NewLimitPlateauForm newLimitPlateauForm) {
+    public ResponseEntity<LimitPlateauDto> register(@RequestBody @Valid NewLimitPlateauForm newLimitPlateauForm) {
         Limit limit = newLimitPlateauForm.toLimit();
-        Plateau plateauWithLimit = this.plateauService.register(limit);
-        return ResponseEntity.ok(new PlateauDto(plateauWithLimit));
+        this.plateauService.register(limit);
+        return ResponseEntity.ok(new LimitPlateauDto(limit));
     }
 
     @GetMapping
