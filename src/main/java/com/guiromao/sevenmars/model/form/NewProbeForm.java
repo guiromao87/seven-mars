@@ -3,6 +3,7 @@ package com.guiromao.sevenmars.model.form;
 import com.guiromao.sevenmars.model.Direction;
 import com.guiromao.sevenmars.model.Position;
 import com.guiromao.sevenmars.model.Probe;
+
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
