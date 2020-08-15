@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/probe")
@@ -29,16 +28,6 @@ public class ProbeController {
         Probe probe = newProbeForm.toProbe();
         this.plateauService.register(probe);
         return ResponseEntity.ok(new ProbeDto(probe));
-    }
-
-    @GetMapping
-    public ResponseEntity<ProbeDto> probe() {
-        Optional<Probe> probeOptional = plateauService.getProbe();
-
-        if(probeOptional.isPresent())
-            return ResponseEntity.ok(new ProbeDto(probeOptional.get()));
-
-        return ResponseEntity.noContent().build();
     }
 
     @PutMapping

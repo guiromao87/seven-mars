@@ -10,6 +10,7 @@ import com.guiromao.sevenmars.validation.UnregisteredPlateauLimitException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -37,4 +38,6 @@ public class PlateauService {
     }
 
     public Optional<Probe> getProbe() { return plateau.getProbe(); }
+
+    public Map<String, Probe> getProbes() { return plateau.getProbes(); }
 }

@@ -41,7 +41,6 @@ public class Probe {
         this.direction = direction.getNextLeft(direction.ordinal());
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -56,4 +55,6 @@ public class Probe {
     public int hashCode() {
         return Objects.hash(position, direction, name);
     }
+
 }
+
