@@ -45,13 +45,13 @@ public class Probe {
         int y = this.getPosition().getY();
         int x = this.getPosition().getX();
 
-        if(this.getDirection().equals(Direction.N))
+        if(direction.equals(Direction.N))
             y++;
-        if(this.getDirection().equals(Direction.S))
+        if(direction.equals(Direction.S))
             y--;
-        if(this.getDirection().equals(Direction.W))
+        if(direction.equals(Direction.W))
             x--;
-        if(this.getDirection().equals(Direction.E))
+        if(direction.equals(Direction.E))
             x++;
 
         return new Position(x,y);
