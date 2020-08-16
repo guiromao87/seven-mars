@@ -16,8 +16,8 @@ public class Plateau {
     }
 
     public void register(Probe probe) {
-        probes.forEach((k,v)-> {
-            if(v.getPosition().equals(probe.getPosition()))
+        probes.forEach((name, currentProbe)-> {
+            if(currentProbe.getPosition().equals(probe.getPosition()))
                 throw new PlateauLimitBusyException("You already have a Probe at this point");
         });
 
@@ -33,9 +33,9 @@ public class Plateau {
     public void isLocalEmptyFor(Probe probe) {
         Position position = probe.nextPositions();
 
-        probes.forEach((k, probeAtPlateau)-> {
-            if(!probe.getName().equals(k)) {
-                if(samePosition(probeAtPlateau, position))
+        probes.forEach((name, currentProbe)-> {
+            if(!probe.getName().equals(name)) {
+                if(samePosition(currentProbe, position))
                     throw new PlateauLimitBusyException("You already have a Probe at this point");
             }
         });
