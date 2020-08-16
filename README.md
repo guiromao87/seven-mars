@@ -9,6 +9,8 @@ Api para registrar e controlar sondas que exploram um planalto limitado em Marte
     * Spring Boot, Spring MVC, Devtools
     * Bean Validation
     * Junit para teste unitários
+    * Docker
+    * Swagger
     
 ## Decisões de negócio
 
@@ -78,3 +80,49 @@ Assim o plugin do maven (já está configurado) gera uma imagem docker do projet
 docker run -p 8080:8080 guiromao/seven-mars:1.0.0
 ```
 Com isso temos o projeto rodando na porta 8080.
+
+## Testando os endpoints
+
+Após rodar os projeto (suponto que manteve a porta default 8080) podemos acessar os endpoints por algum cliente postman, 
+ou utilizar a documentação do swagger no endereço: ```http://localhost:8080/swagger-ui.html```
+
+Aqui vou deixar um exemplo de chamada para cada endpoint:
+
+Cadastrando um limite no Planalto: 
+```
+POST - localhost:8080/plateau
+{
+	"x" : "5",
+	"y" : "5"
+}
+```
+
+Registrando uma Sonda: 
+```
+POST - localhost:8080/probe
+{
+	"x" : "1",
+	"y" : "2",
+	"direction" : "N",
+	"name" : "probe1"
+}
+```
+
+Movendo a Sonda cadastrada:
+```
+PUT - localhost:8080/probe/probe1
+{
+    ["L","M","L","M","L","M","L","M","M"]
+}
+```
+
+Obtendo informações da Sonda:
+```
+GET - localhost:8080/probe/probe1
+```
+
+Obtendo informações de todas as Sondas:
+```
+GET - localhost:8080/probe
+```
+
