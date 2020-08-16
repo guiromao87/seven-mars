@@ -5,12 +5,10 @@ import com.guiromao.sevenmars.model.Plateau;
 import com.guiromao.sevenmars.model.Probe;
 import com.guiromao.sevenmars.validation.OutsidePlateauLimitException;
 import com.guiromao.sevenmars.validation.PlateauLimitMoveValidation;
-import com.guiromao.sevenmars.validation.ProbeNotAtPlateauException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ProbeService {
@@ -21,22 +19,16 @@ public class ProbeService {
     @Autowired
     private PlateauLimitMoveValidation limitValidation;
 
-    public Probe move(String name, List<Moviment> moviments) {
-        Optional<Probe> optional = plateau.findBy(name);
-
-        if(!optional.isPresent())
-            throw new ProbeNotAtPlateauException("No probe registered in the plateau");
-
-        Probe probe = optional.get();
-
+    public Probe move(Probe probe, List<Moviment> moviments) {
         moviments.stream().forEach(movement ->  {
-            if(movement == Moviment.M)
+            if(movement == Moviment.M) {
                 if (limitValidation.isOutInsideOfLimitToMove(probe, plateau.getLimit()))
                     throw new OutsidePlateauLimitException("The probe crossed the limit of the plateau");
-
+                plateau.isLocalEmptyFor(probe);
+            }
             movement.move(probe);
         });
-
+        
         return probe;
     }
 }

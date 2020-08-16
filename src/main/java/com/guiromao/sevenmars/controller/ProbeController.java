@@ -61,7 +61,7 @@ public class ProbeController {
         if(!optionalProbe.isPresent())
             return ResponseEntity.notFound().build();
 
-        Probe probe = this.probeService.move(name, moviments);
+        Probe probe = this.probeService.move(optionalProbe.get(), moviments);
         return ResponseEntity.ok(new ProbeDto(probe));
     }
 }
