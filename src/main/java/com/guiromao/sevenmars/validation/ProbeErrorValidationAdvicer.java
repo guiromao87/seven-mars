@@ -50,4 +50,10 @@ public class ProbeErrorValidationAdvicer {
     public ErrorDto handleProbeNotAtPlateauError(ProbeNotAtPlateauException ex) {
         return new ErrorDto(ex.getMessage());
     }
+
+    @ResponseStatus(code = HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(PlateauLimitBusyException.class)
+    public ErrorDto handlePlateauLimitBusyError(PlateauLimitBusyException ex) {
+        return new ErrorDto(ex.getMessage());
+    }
 }

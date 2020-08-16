@@ -1,5 +1,7 @@
 package com.guiromao.sevenmars.model;
 
+import com.guiromao.sevenmars.validation.PlateauLimitBusyException;
+
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -7,7 +9,6 @@ import java.util.Optional;
 
 public class Plateau {
     private Limit limit;
-    private Probe probe;
     private Map<String, Probe> probes = new HashMap<>();
 
     public void register(Limit limit) {
@@ -15,6 +16,11 @@ public class Plateau {
     }
 
     public void register(Probe probe) {
+        probes.forEach((k,v)-> {
+            if(v.getPosition().equals(probe.getPosition()))
+                throw new PlateauLimitBusyException("You already have a Probe at this point");
+        });
+
         this.probes.put(probe.getName(), probe);
     }
 
