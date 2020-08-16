@@ -10,43 +10,48 @@ public class PlateauLimitMoveValidation {
 
     public boolean isOutInsideOfLimitToMove(Probe probe, Limit limit) {
 
-        if (probe.getPosition().getX() < 0 || probe.getPosition().getY() < 0) {
+        if (isSomeNegativePosition(probe) || isPassLimitOfPlateau(probe, limit))
             return true;
-        }
 
-        if(probe.getPosition().getX() > limit.getX() || probe.getPosition().getY() > limit.getY()) {
+        if (isAtBeginningOfThePlateauAndDirectionIsWestOrSouth(probe))
             return true;
-        }
 
-
-        if(probe.getPosition().getX() == 0 && probe.getPosition().getY() == 0) {
-            if(probe.getDirection() == Direction.N || probe.getDirection() == Direction.E) {
-                return false;
-            }
+        if(isAtLimitOfThePlateauAndDirectionIsEastOrNorth(probe, limit))
             return true;
-        }
 
-        if(probe.getPosition().getX() == limit.getX() && probe.getPosition().getY() == limit.getY()) {
-            if(probe.getDirection() == Direction.W || probe.getDirection() == Direction.S) {
-                return false;
-            }
+        if(isOnXAxisAndDirectionIsSouth(probe, limit))
             return true;
-        }
 
-        if(probe.getPosition().getX() == 0 && probe.getPosition().getY() > 0) {
-            if(probe.getDirection() == Direction.N || probe.getDirection() == Direction.E || probe.getDirection() == Direction.S) {
-                return false;
-            }
+        if(isOnYAxisAndDirectionIsWest(probe, limit))
             return true;
-        }
-
-        if(probe.getPosition().getY() == 0 && probe.getPosition().getX() > 0) {
-            if(probe.getDirection() == Direction.N || probe.getDirection() == Direction.W || probe.getDirection() == Direction.E) {
-                return false;
-            }
-            return true;
-        }
 
         return false;
+    }
+
+
+    private boolean isSomeNegativePosition(Probe probe) {
+        return probe.getPosition().getX() < 0 || probe.getPosition().getY() < 0;
+    }
+
+    private boolean isPassLimitOfPlateau(Probe probe, Limit limit) {
+        return probe.getPosition().getX() > limit.getX() || probe.getPosition().getY() > limit.getY();
+    }
+
+    private boolean isAtBeginningOfThePlateauAndDirectionIsWestOrSouth(Probe probe) {
+        return (probe.getPosition().getX() == 0 && probe.getPosition().getY() == 0)
+                && (probe.getDirection() == Direction.W || probe.getDirection() == Direction.S);
+    }
+
+    private boolean isAtLimitOfThePlateauAndDirectionIsEastOrNorth(Probe probe, Limit limit) {
+        return (probe.getPosition().getX() == limit.getX() && probe.getPosition().getY() == limit.getY())
+            && (probe.getDirection() == Direction.E || probe.getDirection() == Direction.N);
+    }
+
+    private boolean isOnYAxisAndDirectionIsWest(Probe probe, Limit limit) {
+        return probe.getPosition().getX() == 0 && probe.getPosition().getY() > 0 && probe.getDirection() == Direction.W;
+    }
+
+    private boolean isOnXAxisAndDirectionIsSouth(Probe probe, Limit limit) {
+        return probe.getPosition().getY() == 0 && probe.getPosition().getX() > 0 && probe.getDirection() == Direction.S;
     }
 }
