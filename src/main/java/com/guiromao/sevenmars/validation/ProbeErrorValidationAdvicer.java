@@ -20,9 +20,6 @@ public class ProbeErrorValidationAdvicer {
     @Autowired
     private MessageSource messageSource;
 
-    @Value("${proble.error.field}")
-    private String field;
-
     @Value("${proble.error.message}")
     private String message;
 
@@ -41,8 +38,8 @@ public class ProbeErrorValidationAdvicer {
 
     @ResponseStatus(code = HttpStatus.BAD_REQUEST)
     @ExceptionHandler(HttpMessageNotReadableException.class)
-    public ProbleErrorFormDto handleDirectionError(HttpMessageNotReadableException ex) {
-        return new ProbleErrorFormDto(field, message);
+    public ErrorDto handleDirectionError(HttpMessageNotReadableException ex) {
+        return new ErrorDto(message);
     }
 
     @ResponseStatus(code = HttpStatus.BAD_REQUEST)
