@@ -59,6 +59,12 @@ Assim mantenho o objeto de dómínio longe das bordas do sistema.
 
 ## Para rodar localmente
 
+Como requisito precisamos ter o java(versão 8 no mínimo) instalado, clonar o projeto, ir na raiz e rodar: 
+
+```
+./mvnw spring-boot:run
+```
+
 
 
 
