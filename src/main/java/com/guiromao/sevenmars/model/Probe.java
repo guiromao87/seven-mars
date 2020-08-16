@@ -41,6 +41,22 @@ public class Probe {
         this.direction = direction.getNextLeft(direction.ordinal());
     }
 
+    public Position nextPositions() {
+        int y = this.getPosition().getY();
+        int x = this.getPosition().getX();
+
+        if(this.getDirection().equals(Direction.N))
+            y++;
+        if(this.getDirection().equals(Direction.S))
+            y--;
+        if(this.getDirection().equals(Direction.W))
+            x--;
+        if(this.getDirection().equals(Direction.E))
+            x++;
+
+        return new Position(x,y);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
