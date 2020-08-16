@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class PlateauErrorValidationAdvice {
 
     @ResponseStatus(code = HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(OutsidePlateauLimitException.class)
-    public ErrorDto handleOutsidePlateauLimitError(OutsidePlateauLimitException ex) {
+    @ExceptionHandler(PlateauOutsideLimitException.class)
+    public ErrorDto handleOutsidePlateauLimitError(PlateauOutsideLimitException ex) {
         return new ErrorDto(ex.getMessage());
     }
 
     @ResponseStatus(code = HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(UnregisteredPlateauLimitException.class)
-    public ErrorDto handleUnregisteredPlateauLimitError(UnregisteredPlateauLimitException ex) {
+    @ExceptionHandler(PlateauUnregisteredLimitException.class)
+    public ErrorDto handleUnregisteredPlateauLimitError(PlateauUnregisteredLimitException ex) {
         return new ErrorDto(ex.getMessage());
     }
 }

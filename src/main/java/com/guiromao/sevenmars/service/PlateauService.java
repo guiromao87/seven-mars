@@ -3,9 +3,9 @@ package com.guiromao.sevenmars.service;
 import com.guiromao.sevenmars.model.Limit;
 import com.guiromao.sevenmars.model.Plateau;
 import com.guiromao.sevenmars.model.Probe;
-import com.guiromao.sevenmars.validation.OutsidePlateauLimitException;
+import com.guiromao.sevenmars.validation.PlateauOutsideLimitException;
 import com.guiromao.sevenmars.validation.PlateauLimitRegisterValidation;
-import com.guiromao.sevenmars.validation.UnregisteredPlateauLimitException;
+import com.guiromao.sevenmars.validation.PlateauUnregisteredLimitException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,10 +28,10 @@ public class PlateauService {
 
     public void register(Probe probe) {
         if(plateau.getLimit() == null)
-            throw new UnregisteredPlateauLimitException("Plateau without a registered limit");
+            throw new PlateauUnregisteredLimitException("Plateau without a registered limit");
 
         if(limitValidation.isOutInsideOfLimitToRegister(probe, plateau.getLimit()))
-            throw new OutsidePlateauLimitException("Proble crossed the limit of the plateau");
+            throw new PlateauOutsideLimitException("Proble crossed the limit of the plateau");
 
         plateau.register(probe);
     }
