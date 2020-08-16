@@ -140,4 +140,53 @@ public class ProbeTest {
         assertEquals(4, probe.getPosition().getX());
         assertEquals(2, probe.getPosition().getY());
     }
+
+    @Test
+    public void shouldReturnNewPosition2And3IfOriginalPositionIs2And2AndDirectionNorth() {
+        Probe probe = new Probe(new Position(2,2), Direction.N, "probe1");
+        Position next = probe.nextPositions();
+
+        assertEquals(2, next.getX());
+        assertEquals(3, next.getY());
+    }
+
+    @Test
+    public void shouldReturnNewPosition2And1IfOriginalPositionIs2And2AndDirectionSouth() {
+        Probe probe = new Probe(new Position(2,2), Direction.S, "probe1");
+        Position next = probe.nextPositions();
+
+        assertEquals(2, next.getX());
+        assertEquals(1, next.getY());
+    }
+
+    @Test
+    public void shouldReturnNewPosition1And2IfOriginalPositionIs2And2AndDirectionWest() {
+        Probe probe = new Probe(new Position(2,2), Direction.W, "probe1");
+        Position next = probe.nextPositions();
+
+        assertEquals(1, next.getX());
+        assertEquals(2, next.getY());
+    }
+
+    @Test
+    public void shouldReturnNewPosition3And2IfOriginalPositionIs2And2AndDirectionEast() {
+        Probe probe = new Probe(new Position(2,2), Direction.E, "probe1");
+        Position next = probe.nextPositions();
+
+        assertEquals(3, next.getX());
+        assertEquals(2, next.getY());
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
