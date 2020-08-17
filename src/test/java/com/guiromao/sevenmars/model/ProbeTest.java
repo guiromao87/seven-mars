@@ -177,16 +177,42 @@ public class ProbeTest {
         assertEquals(2, next.getY());
     }
 
+    @Test
+    public void shouldBeInsideThePlateauStartingAt1And2andNorthAndSequenceLMLMLMLMM() {
+        Probe probe = new Probe(new Position(1,2), Direction.N, "probe1");
+        probe.left();
+        probe.forward();
+        probe.left();
+        probe.forward();
+        probe.left();
+        probe.forward();
+        probe.left();
+        probe.forward();
+        probe.forward();
 
+        assertEquals(1, probe.getPosition().getX());
+        assertEquals(3, probe.getPosition().getY());
+        assertEquals(Direction.N, probe.getDirection());
+    }
 
+    @Test
+    public void shouldBeAtPositions5And1andEastWithSequenceMMRMMRMRRM() {
+        Probe probe = new Probe(new Position(3,3), Direction.E, "probe1");
+        probe.forward();
+        probe.forward();
+        probe.right();
 
+        probe.forward();
+        probe.forward();
+        probe.right();
 
+        probe.forward();
+        probe.right();
+        probe.right();
+        probe.forward();
 
-
-
-
-
-
-
-
+        assertEquals(5, probe.getPosition().getX());
+        assertEquals(1, probe.getPosition().getY());
+        assertEquals(Direction.E, probe.getDirection());
+    }
 }

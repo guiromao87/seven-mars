@@ -10,7 +10,10 @@ public class PlateauLimitMoveValidation {
 
     public boolean isOutInsideOfLimitToMove(Probe probe, Limit limit) {
 
-        if (isSomeNegativePosition(probe) || isPassLimitOfPlateau(probe, limit))
+        if (isSomeNegativePosition(probe))
+            return true;
+
+        if(isPassLimitOfPlateau(probe, limit))
             return true;
 
         if (isAtBeginningOfThePlateauAndDirectionIsWestOrSouth(probe))
@@ -19,10 +22,16 @@ public class PlateauLimitMoveValidation {
         if(isAtLimitOfThePlateauAndDirectionIsEastOrNorth(probe, limit))
             return true;
 
-        if(isOnXAxisAndDirectionIsSouth(probe, limit))
+        if(isOnXAxisAndDirectionIsSouth(probe))
             return true;
 
-        if(isOnYAxisAndDirectionIsWest(probe, limit))
+        if(isOnYAxisAndDirectionIsWest(probe))
+            return true;
+
+        if(isOnXAxisAndDirectToEast(probe, limit))
+            return true;
+
+        if(isOnYAxisAndDirectToNorth(probe, limit))
             return true;
 
         return false;
@@ -37,6 +46,7 @@ public class PlateauLimitMoveValidation {
         return probe.getPosition().getX() > limit.getX() || probe.getPosition().getY() > limit.getY();
     }
 
+
     private boolean isAtBeginningOfThePlateauAndDirectionIsWestOrSouth(Probe probe) {
         return (probe.getPosition().getX() == 0 && probe.getPosition().getY() == 0)
                 && (probe.getDirection() == Direction.W || probe.getDirection() == Direction.S);
@@ -47,11 +57,19 @@ public class PlateauLimitMoveValidation {
             && (probe.getDirection() == Direction.E || probe.getDirection() == Direction.N);
     }
 
-    private boolean isOnYAxisAndDirectionIsWest(Probe probe, Limit limit) {
+    private boolean isOnYAxisAndDirectionIsWest(Probe probe) {
         return probe.getPosition().getX() == 0 && probe.getPosition().getY() > 0 && probe.getDirection() == Direction.W;
     }
 
-    private boolean isOnXAxisAndDirectionIsSouth(Probe probe, Limit limit) {
+    private boolean isOnXAxisAndDirectionIsSouth(Probe probe) {
         return probe.getPosition().getY() == 0 && probe.getPosition().getX() > 0 && probe.getDirection() == Direction.S;
+    }
+
+    private boolean isOnXAxisAndDirectToEast(Probe probe, Limit limit) {
+        return probe.getPosition().getX() == limit.getX() && probe.getDirection() == Direction.E;
+    }
+
+    private boolean isOnYAxisAndDirectToNorth(Probe probe, Limit limit) {
+        return probe.getPosition().getY() ==  limit.getY() && probe.getDirection() == Direction.N;
     }
 }
