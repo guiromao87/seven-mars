@@ -54,10 +54,18 @@ Tenho 5 endpoints para as ações:
     
     * passando as informações necessárias no corpo da requisição
 
-Os endpoints recebem uma representação do json na entrada(form) e criam o objeto de domínio.
-Na saída criam outro objeto que representa o json de saída(dto).
+Os endpoints recebem uma representação do json na entrada(form), fazem validação dessas entradas, criam o objeto de 
+domínio e passam para service(deixando-os sem lógica de negócio). E na saída criam outro objeto que representa o json de saída(dto).
 Assim mantenho o objeto de dómínio longe das bordas do sistema.
 
+Tomei a decisão de deixar as validações de negócio no service, para isso criei classes responsáveis por receber os objetos que serão validados e aplicar as regras.
+
+Os comportamentos deixei nos respectivos modelos(evitando de deixa-los anêmicos), como por exemplo, 
+uma Sonda sabe se movimentar e sabe quando seu próximo passo, e assim por diante.
+
+Existem casos dentro da própria Sonda onde verifico sua direção e aplico uma logica nisso. Poderia ter substituído os ifs por outra forma talvez mais elegante, 
+mas como no meu sistema esses ifs não vão crescer mais(pois só tem N/S/E/W) achei que ficou valido deixar os ifs e me pareceu semântico, 
+mas não sei se foi a melhor decisão.
 
 ## Para rodar localmente
 
@@ -125,4 +133,3 @@ Obtendo informações de todas as Sondas:
 ```
 GET - localhost:8080/probe
 ```
-
