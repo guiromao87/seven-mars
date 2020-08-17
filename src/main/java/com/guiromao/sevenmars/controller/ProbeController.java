@@ -1,6 +1,6 @@
 package com.guiromao.sevenmars.controller;
 
-import com.guiromao.sevenmars.model.Moviment;
+import com.guiromao.sevenmars.model.Movement;
 import com.guiromao.sevenmars.model.Probe;
 import com.guiromao.sevenmars.model.dto.ProbeDto;
 import com.guiromao.sevenmars.model.form.NewProbeForm;
@@ -54,14 +54,14 @@ public class ProbeController {
 
     @PutMapping("/{name}")
     public ResponseEntity<ProbeDto> move(@PathVariable String name,
-                                         @RequestBody List<Moviment> moviments) {
+                                         @RequestBody List<Movement> movements) {
 
         Optional<Probe> optionalProbe = plateauService.findProbeBy(name);
 
         if(!optionalProbe.isPresent())
             return ResponseEntity.notFound().build();
 
-        Probe probe = this.probeService.move(optionalProbe.get(), moviments);
+        Probe probe = this.probeService.move(optionalProbe.get(), movements);
         return ResponseEntity.ok(new ProbeDto(probe));
     }
 }
